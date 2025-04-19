@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { LuEye, LuEyeOff } from "react-icons/lu";
-import { FaInfoCircle } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserAuth } from "../../slice/userSlice";
 
 const Signin = () => {
@@ -20,13 +19,6 @@ const Signin = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const isUserLoggedIn = useSelector((state) => state.user.authorized);
-
-  useEffect(() => {
-    if (isUserLoggedIn) {
-      navigate("/dashboard/home");
-    }
-  }, [isUserLoggedIn, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
